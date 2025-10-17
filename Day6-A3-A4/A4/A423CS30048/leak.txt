@@ -1,0 +1,37 @@
+==7612== Memcheck, a memory error detector
+==7612== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==7612== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==7612== Command: ./a.out
+==7612== Parent PID: 7580
+==7612== 
+==7612== 
+==7612== HEAP SUMMARY:
+==7612==     in use at exit: 456 bytes in 19 blocks
+==7612==   total heap usage: 21 allocs, 2 frees, 2,504 bytes allocated
+==7612== 
+==7612== LEAK SUMMARY:
+==7612==    definitely lost: 24 bytes in 1 blocks
+==7612==    indirectly lost: 432 bytes in 18 blocks
+==7612==      possibly lost: 0 bytes in 0 blocks
+==7612==    still reachable: 0 bytes in 0 blocks
+==7612==         suppressed: 0 bytes in 0 blocks
+==7612== Rerun with --leak-check=full to see details of leaked memory
+==7612== 
+==7612== For lists of detected and suppressed errors, rerun with: -s
+==7612== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+
+
+
+The contents of the list (in descending order) is: 
+90178  90176  90174  90172  90170  90168  90166  90164  90162  90160  90158  90156  90154  90152  90150  90148  90146  90144 
+
+(a) 456 bytes are lost. 24 bytes are lost definitely and 432 are lost indirectly.
+
+
+(b) Block refers to the set of bytes that are allocated together and hence lost together.
+
+
+(c) Reversing the order of deletion minimizes the lost memory.
+
+
+(d) In the deleteList function, curr is not freed for the if condition(lines 60-63), which leads to indirect loss of bytes. Also on line 58, curr should be freed before returning head. In the main function, head should be freed before (line 110) return, this caused definite loss of memory.

@@ -1,0 +1,9 @@
+#rm -f *.o *.so
+gcc -Wall -fPIC -c -I./include matIO.c
+gcc -Wall -fPIC -c -I./include matAlg.c
+
+ar rcs libmatrix.a matIO.o matAlg.o
+chmod a+x libmatrix.a
+mv libmatrix.a ./lib/
+gcc -Wall -I./include -L./lib matops.c -lmatrix -o matops
+

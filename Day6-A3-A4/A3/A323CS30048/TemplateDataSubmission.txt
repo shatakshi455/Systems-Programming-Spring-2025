@@ -1,0 +1,42 @@
+CS29206: Systems Programming Lab	|	Spring 2025	|
+Assignment 3
+=================================================================
+Data Submission File
+================================================================
+
+Roll No:23CS30048
+List of Factors: 1 2 3 4 6 8 12 16 24 32 48 96 313 626(gives segmentation fault) 939
+List of Factors in the working zone: 2 4 6 12 16 24 32 48 626
+List of Functions in the program:
+[1] func0                   [3] func2
+[2] func1                   [4] workZone2
+
+For the last two working zone factors (which are more than 10) provide the data as follows:
+
+================================================================
+Factor 1: 32 
+List the functions present in the program (only the programmer specified functions):
+[1] func0                   [3] func2
+[2] func1                   [4] workZone2
+
+Function1 ........calls ........... Function2 ........... count times
+main             calls              func0                       1
+workZone2        calls              func1                       1
+func1            calls              func1                       8
+workZone2        calls              func2                       1
+func2            calls              func2                     4094
+main             calls             workZone2                    1
+
+
+Factor 2: 48
+List the functions present in the program (only the programmer specified functions): 
+[1] func0                   [3] func2
+[2] func1                   [4] workZone2
+
+Function1 ........calls ........... Function2 ........... count times
+main              calls             func0                     1
+func1             calls             func1                    66
+workZone2         calls             func1                     1
+func2             calls             func2                    254
+workZone2         calls             func2                     1
+main             calls             workZone2                  1
